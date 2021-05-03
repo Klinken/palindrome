@@ -8,7 +8,7 @@ namespace palindrome
         static void Main(string[] args)
         {
             // Variables
-            string[] wordsToCheck = new string[2];
+            string[] wordsToCheck = new string[5];
 
             // Methods
 
@@ -41,8 +41,12 @@ namespace palindrome
 
                 if (regex.IsMatch(wordToAdd))
                 {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
 
                     Console.WriteLine("Please only one word and no spaces");
+
+                    Console.ResetColor();
 
                     getWordFromUser(numberInLine, text);
 
@@ -56,12 +60,17 @@ namespace palindrome
 
             // Execution
 
+            //Ask the user how many word they wish to check
+            Console.WriteLine("Welcome to the palindrome-checker!\n");
+
 
             //First we get the words from the user
             for (int i = 0; i < wordsToCheck.Length; i++)
             {
                 getWordFromUser(i, $"#{i + 1} word to check: ");
             }
+
+            Console.WriteLine("");
 
             //Then we check the words and inform the user
             for (var i = 0; i < wordsToCheck.Length; i++)
