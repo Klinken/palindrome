@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace palindrome
 {
@@ -7,7 +8,7 @@ namespace palindrome
         static void Main(string[] args)
         {
             // Variables
-            string[] wordsToCheck = new string[5];
+            string[] wordsToCheck = new string[2];
 
             // Methods
 
@@ -32,9 +33,25 @@ namespace palindrome
 
             void getWordFromUser(int numberInLine, string text)
             {
+                Regex regex = new Regex(@"\ ");
+
                 Console.Write(text);
 
-                wordsToCheck[numberInLine] = Console.ReadLine();
+                string wordToAdd = Console.ReadLine();
+
+                if (regex.IsMatch(wordToAdd))
+                {
+
+                    Console.WriteLine("Please only one word and no spaces");
+
+                    getWordFromUser(numberInLine, text);
+
+                }
+                else
+                {
+                    wordsToCheck[numberInLine] = wordToAdd;
+                }
+
             }
 
             // Execution
